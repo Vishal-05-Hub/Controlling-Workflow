@@ -19,6 +19,8 @@ jobs:
         run: npm ci
       - name: Lint code
         run: npm run lint
+   # failure() is special conditional function that returns true only when 
+   # previous steps fails.
   test:
     runs-on: ubuntu-latest
     steps:
@@ -35,8 +37,6 @@ jobs:
       - name: Test code
         run: npm run test
       - name: Upload test report
-        # failure() is special conditional function that returns true only when 
-        # previous steps fails.
         if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
