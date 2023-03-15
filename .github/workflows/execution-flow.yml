@@ -35,8 +35,6 @@ jobs:
       - name: Test code
         run: npm run test
       - name: Upload test report
-        # failure() is special conditional function that returns true only when previous steps fails.
-        if: failure() && steps.run-tests.outcome == 'failure'
         uses: actions/upload-artifact@v3
         with:
           name: test-report
@@ -75,11 +73,3 @@ jobs:
         run: ls
       - name: Deploy
         run: echo "Deploying..."
-  reports:
-    # This job will run only when any of the previous job fails.
-    needs: [ lint, deploy ]
-    if: failure()
-    runs-on: ubuntu-latest
-    steps:
-      name: Output information
-      run: echo "Something went wrong"
