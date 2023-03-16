@@ -14,6 +14,8 @@ jobs:
       - name: Get code
         uses: actions/download-artifacts@v3
         with:
-          name: ${{ imputs.artifact-name }}
+          name: ${{ inputs.artifact-name }}
+      - name: List Files
+        run: ls
       - name: Output information
         run: echo "Deploying and Uploading."
