@@ -1,8 +1,19 @@
 name: Reusable workflow
-on: workflow_call # It will run when called by another workflow
+on: 
+  workflow_call: # It will run when called by another workflow
+    inputs:
+      artifact-name:
+        description: The name of the deployable artifact name
+        required: false # It means that the workflow can even run when the artifact is provided or not
+        default: dist # It will take dist as the default value andpass downwards
+        type: string
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Get code
+        uses: actions/download-artifacts@v3
+        with:
+          name: ${{ imputs.artifact-name }}
       - name: Output information
         run: echo "Deploying and Uploading."
