@@ -22,6 +22,6 @@ jobs:
     steps:
       - name: Hello World
         run: |
-          ./deploy1.ps1 ${{ vars.ENV_NAME }}
+          ./deploy1.ps1 ${{ github.event.inputs.name }}
 
     
