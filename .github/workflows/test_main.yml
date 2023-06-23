@@ -4,13 +4,12 @@ on:
     inputs:
      name:
        description: 'Select Deployment Environment'
+       type: choice
        options:
        - demo_openai
        - dev_openai
        - sbx_jd
        - sbx_trp
-     message:
-        required: true
 concurrency:
   group: assist-accelerator-infrastructure
   cancel-in-progress: false  # TODO - This may not be a good idea on an infra deploy - TRP (06/22/2023)
