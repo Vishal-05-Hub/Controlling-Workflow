@@ -17,7 +17,7 @@ concurrency:
 jobs:
   deploy:
     environment:
-      name: infra-test
+      name: test-infra
     runs-on: ubuntu-latest
     steps:
       - name: Hello World
