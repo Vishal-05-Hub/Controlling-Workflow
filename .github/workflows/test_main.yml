@@ -16,10 +16,12 @@ concurrency:
 
 jobs:
   deploy:
+    environment:
+      name: infra-test
     runs-on: ubuntu-latest
     steps:
       - name: Hello World
         run: |
-          ./deploy1.ps1 ${{ github.event.inputs.name }}
+          ./deploy1.ps1 ${{ vars.ENV_NAME }}
 
     
