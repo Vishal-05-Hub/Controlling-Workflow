@@ -27,6 +27,3 @@ jobs:
         
         echo "::set-output name=repository_name::${REPO_NAME}"
       shell: bash
-
-    - name: Get Repository Name
-      run: echo "Repository Name: ${{steps.create_repo.outputs.repository_name}}"
